@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { Filter } from './Filter/Filter';
 import { ContactList } from './ContactList/ContactList';
-import { getContacts, getFilter } from 'redux/actions';
+import { getContacts, getFilter } from 'redux/selectors';
 import { useDispatch } from 'react-redux';
 import { addContact, delContact } from 'redux/actions';
 
@@ -15,7 +15,7 @@ export const App = () => {
 
   const [firstRenderFlag, setFlag] = useState(true);
 
-  useEffect(() => { }, []);
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (firstRenderFlag) {
@@ -71,7 +71,7 @@ export const App = () => {
       <h1>Phonebook</h1>
       <ContactForm handleSubmit={handleSubmit} />
       <h2> Contacts</h2>
-      <Filter filter={filter} handleChange={handleChange} />
+      <Filter />
       <ContactList
         contacts={getFilteredContacts()}
         handleDelete={handleDelete}
